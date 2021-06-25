@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -9,19 +10,19 @@ using System.Threading.Tasks;
 namespace O_Auth_Demo.Controllers
 {
     [ApiController]
-    [Route("auth")]
-    public class AuthController : ControllerBase
+    [Route("api/JustA")]
+    public class JustAController : ControllerBase
     {
         private readonly AuthConfigurations _authConfigurations;
-        private readonly ILogger<AuthController> _logger;
+        private readonly ILogger<JustAController> _logger;
 
-        public AuthController(ILogger<AuthController> logger, IOptions<AuthConfigurations> authConfigurations)
+        public JustAController(ILogger<JustAController> logger, IOptions<AuthConfigurations> authConfigurations)
         {
             _logger = logger;
             _authConfigurations = authConfigurations.Value;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public String Get()
         {
             return "Hello";

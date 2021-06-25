@@ -9,8 +9,7 @@ namespace O_Auth_Demo
     {
         public const String Auth = "Auth";
         
-        public String Domain { get; set; }
-        public String ClientId { get; set; }
-        public String ClientSecret { get; set; }
+        public String Authority { get; set; }
+        public String Audience { get; set; }
     }
 }
